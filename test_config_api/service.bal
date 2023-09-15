@@ -2,6 +2,7 @@ import ballerina/http;
 
 configurable int dbPort = 9090;
 configurable string message = "name should not be empty!";
+configurable string input = ?;
 
 # A service representing a network-accessible API
 # bound to port `9090`.
@@ -15,6 +16,6 @@ service / on new http:Listener(dbPort) {
         if name is "" {
             return error(message);
         }
-        return "Hello, " + name;
+        return "Hello, " + name + "!" + input;
     }
 }
